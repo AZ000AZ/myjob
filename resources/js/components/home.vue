@@ -7,12 +7,12 @@
                 <div class="absolute inset-0 bg-gradient-to-br from-orange-600/80 via-red-600/70 to-pink-600/80"></div>
             </div>
             <div class="relative z-10 text-center text-white pt-32 pb-16">
-                <h1 class="text-5xl font-bold mb-4">İş İlanlarını Keşfet</h1>
-                <p class="text-xl text-white/90">Binlerce ilan arasından sana uygun olanı bul</p>
+                <h1 class="text-5xl font-bold mb-4">Explore Job Listings</h1>
+                <p class="text-xl text-white/90">Find the perfect opportunity among thousands of listings</p>
             </div>
         </div>
 
-        <!-- İçerik -->
+        <!-- Content -->
         <div class="relative bg-white py-16 px-4">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div v-for="job in jobs" :key="job.title"
@@ -21,7 +21,7 @@
                     <p class="text-gray-500">{{ job.company }}</p>
                     <p class="text-sm text-gray-400 mt-2">{{ job.location }}</p>
                     <button class="mt-4 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
-                        Detaylar
+                        Details
                     </button>
                 </div>
             </div>
@@ -35,9 +35,9 @@ export default {
         return {
             backgroundImage: '/images/jobs-bg.jpg',
             jobs: [
-                { title: 'Frontend Developer', company: 'TechCorp', location: 'İstanbul' },
+                { title: 'Frontend Developer', company: 'TechCorp', location: 'Istanbul' },
                 { title: 'Backend Developer', company: 'CodeWorks', location: 'Ankara' },
-                { title: 'UI Designer', company: 'DesignPro', location: 'İzmir' }
+                { title: 'UI Designer', company: 'DesignPro', location: 'Izmir' }
             ]
         }
     }

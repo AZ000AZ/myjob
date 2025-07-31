@@ -9,7 +9,6 @@
 </template>
 
 <script>
-
 import HeroSection from './HeroSection.vue';
 import CategoriesSection from './CategoriesSection.vue';
 import FeaturedJobsSection from './FeaturedJobsSection.vue';
@@ -18,7 +17,6 @@ import FooterSection from './FooterSection.vue';
 export default {
     name: 'App',
     components: {
-
         HeroSection,
         CategoriesSection,
         FeaturedJobsSection,

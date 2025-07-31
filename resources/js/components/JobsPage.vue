@@ -1,141 +1,121 @@
 <template>
-    <section class="relative flex flex-col">
-        <!-- Hero -->
-        <div class="relative h-[650px] overflow-hidden animated-gradient clip-hero">
-            <div class="absolute inset-0 bg-black/30"></div>
-            <div class="relative z-10 text-center text-white flex flex-col items-center justify-center h-full">
-                <h1 class="text-4xl font-bold mb-2">
-                    İş İlanlarını <span class="text-yellow-300">Keşfet</span>
-                </h1>
-                <p class="text-lg">Tüm açık pozisyonları burada bulabilirsiniz.</p>
+    <section class="relative pt-28 pb-16 px-4 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen overflow-y-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+            <!-- Filters -->
+            <div class="lg:col-span-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl sticky top-28 self-start">
+                <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <i class="bi bi-funnel-fill text-purple-400"></i> Filters
+                </h2>
+
+                <!-- City -->
+                <label class="block text-gray-300 mb-2">City</label>
+                <select v-model="filters.city"
+                        class="w-full mb-6 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-purple-500">
+                    <option class="bg-gray-800">All</option>
+                    <option class="bg-gray-800">Istanbul</option>
+                    <option class="bg-gray-800">Ankara</option>
+                    <option class="bg-gray-800">Izmir</option>
+                </select>
+
+                <!-- Category -->
+                <label class="block text-gray-300 mb-2">Category</label>
+                <select v-model="filters.category"
+                        class="w-full mb-6 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-purple-500">
+                    <option class="bg-gray-800">All</option>
+                    <option class="bg-gray-800">Software</option>
+                    <option class="bg-gray-800">Marketing</option>
+                    <option class="bg-gray-800">Design</option>
+                </select>
+
+                <!-- Type -->
+                <label class="block text-gray-300 mb-2">Job Type</label>
+                <div class="space-y-2 mb-6">
+                    <label v-for="type in ['Full Time','Part Time','Remote']" :key="type" class="flex items-center gap-2">
+                        <input type="radio" v-model="filters.type" :value="type" class="accent-purple-500">
+                        <span class="text-gray-300">{{ type }}</span>
+                    </label>
+                </div>
+
+                <button @click="applyFilters"
+                        class="w-full py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold shadow-lg hover:scale-[1.02] transition">
+                    Apply Filters
+                </button>
             </div>
 
-            <!-- Zigzag Divider -->
-            <svg class="absolute bottom-0 left-0 w-full" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0 60,20 120,0 180,20 240,0 300,20 360,0 420,20 480,0 540,20 600,0 660,20 720,0 780,20 840,0 900,20 960,0 1020,20 1080,0 1140,20 1200,0 V120 H0 Z" fill="#f9fafb"></path>
-            </svg>
-        </div>
+            <!-- Job Listings -->
+            <div class="lg:col-span-3 grid grid-cols-1 gap-6">
+                <div v-for="job in jobs" :key="job.id"
+                     class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 transition-all duration-300 hover:bg-white/20 hover:scale-[1.02] hover:shadow-2xl group">
 
-
-        <!-- Content Area -->
-        <div class="bg-gradient-to-br from-orange-50 via-pink-50 to-red-50 py-1 px-4">
-
-
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- Filters -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-                    <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-                        <i class="bi bi-funnel-fill text-orange-500"></i>
-                        Filtreler
-                    </h2>
-                    <!-- Şehir -->
-                    <label class="block mb-2 font-medium">Şehir</label>
-                    <div class="flex items-center mb-4">
-                        <i class="bi bi-geo-alt text-gray-400 mr-2"></i>
-                        <select v-model="filters.city" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-orange-400">
-                            <option value="">Tümü</option>
-                            <option>İstanbul</option>
-                            <option>Ankara</option>
-                            <option>İzmir</option>
-                        </select>
+                    <!-- Title & Company -->
+                    <div class="flex justify-between items-center mb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyan-300">{{ job.title }}</h3>
+                            <p class="text-purple-300">{{ job.company }}</p>
+                        </div>
+                        <span class="text-cyan-400 font-semibold">{{ job.salary }}</span>
                     </div>
-                    <!-- Kategori -->
-                    <label class="block mb-2 font-medium">Kategori</label>
-                    <div class="flex items-center mb-4">
-                        <i class="bi bi-tags text-gray-400 mr-2"></i>
-                        <select v-model="filters.category" class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-orange-400">
-                            <option value="">Tümü</option>
-                            <option>Yazılım</option>
-                            <option>Pazarlama</option>
-                            <option>Tasarım</option>
-                        </select>
+
+                    <!-- Location -->
+                    <div class="flex items-center text-gray-400 text-sm mb-3">
+                        <i class="bi bi-geo-alt mr-2"></i>{{ job.city }}
                     </div>
-                    <!-- Çalışma Şekli -->
-                    <label class="block mb-2 font-medium">Çalışma Şekli</label>
-                    <div class="space-y-2 mb-6">
-                        <label class="flex items-center gap-2">
-                            <input type="radio" value="Tam Zamanlı" v-model="filters.type" class="accent-orange-500" />
-                            Tam Zamanlı
-                        </label>
-                        <label class="flex items-center gap-2">
-                            <input type="radio" value="Yarı Zamanlı" v-model="filters.type" class="accent-orange-500" />
-                            Yarı Zamanlı
-                        </label>
-                        <label class="flex items-center gap-2">
-                            <input type="radio" value="Uzaktan" v-model="filters.type" class="accent-orange-500" />
-                            Uzaktan
-                        </label>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span v-for="tag in job.tags" :key="tag"
+                              class="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/30 text-purple-200 text-xs rounded-full">
+                            {{ tag }}
+                        </span>
                     </div>
-                    <button @click="applyFilters" class="bg-orange-500 hover:bg-orange-600 transition text-white w-full py-2 rounded-lg font-medium">
-                        <i class="bi bi-filter-circle mr-2"></i> Filtreleri Uygula
+
+                    <!-- Apply Button -->
+                    <button
+                        class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-4 py-2 rounded-lg shadow-lg shadow-purple-500/25">
+                        Apply
                     </button>
                 </div>
-
-                <!-- Job Listings -->
-                <div class="md:col-span-3 grid grid-cols-1 gap-6">
-                    <div v-for="job in jobs" :key="job.id"
-                         class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition p-6 border border-gray-100">
-                        <h2 class="text-lg font-bold">{{ job.title }}</h2>
-                        <p class="text-gray-500 text-sm">{{ job.company }}</p>
-                        <p class="text-gray-400 text-sm mb-3">{{ job.city }}, {{ job.country }}</p>
-                        <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg">
-                            Detay
-                        </button>
-                    </div>
-                </div>
-
             </div>
+
         </div>
     </section>
 </template>
 
 <script>
 export default {
+    name: "JobsPage",
     data() {
         return {
-            jobs: [],
             filters: {
-                city: '',
-                category: '',
-                type: ''
-            }
-        }
-    },
-    mounted() {
-        this.getJobs()
+                city: "",
+                category: "",
+                type: ""
+            },
+            jobs: [
+                {
+                    id: 1,
+                    title: "Frontend Developer",
+                    company: "TechCorp",
+                    city: "Istanbul",
+                    salary: "20,000 - 30,000 TRY",
+                    tags: ["Vue.js", "Tailwind", "SPA"]
+                },
+                {
+                    id: 2,
+                    title: "Backend Developer",
+                    company: "CodeWorks",
+                    city: "Ankara",
+                    salary: "18,000 - 28,000 TRY",
+                    tags: ["Laravel", "MySQL", "API"]
+                }
+            ]
+        };
     },
     methods: {
-        async getJobs() {
-            try {
-                const params = new URLSearchParams(this.filters).toString()
-                const res = await fetch(`/jobs-data?${params}`)
-                this.jobs = await res.json()
-            } catch (err) {
-                console.error('İş ilanları alınamadı:', err)
-            }
-        },
         applyFilters() {
-            this.getJobs()
+            console.log("Filters applied:", this.filters);
         }
     }
-}
+};
 </script>
-
-<style scoped>
-.clip-hero {
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-}
-
-/* Animated Gradient */
-.animated-gradient {
-    background: linear-gradient(-45deg, #f97316, #ec4899, #f97316, #ec4899);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-}
-
-@keyframes gradientMove {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
-</style>

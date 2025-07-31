@@ -8,10 +8,10 @@
             <div class="text-center mb-16">
                 <div class="bg-white/20 backdrop-blur-lg rounded-2xl p-8 border border-white/30 shadow-2xl">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4 drop-shadow-lg">
-                        Popüler Kategoriler
+                        Popular Categories
                     </h2>
                     <p class="text-gray-700 text-xl drop-shadow-sm">
-                        Size uygun kategoriyi seçin ve hayalinizdeki işi bulun
+                        Choose the category that suits you and find your dream job
                     </p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
 
                             <!-- Count -->
                             <p class="text-gray-600 text-sm font-medium drop-shadow-sm">
-                                {{ category.count }} ilan
+                                {{ category.count }} jobs
                             </p>
                         </div>
                     </div>
@@ -58,14 +58,14 @@ export default {
     data() {
         return {
             categories: [
-                { name: "Yazılım & IT", icon: "fas fa-code", count: "3,245", color: "bg-gradient-to-br from-blue-500/80 to-cyan-500/80" },
-                { name: "Tasarım & Kreatif", icon: "fas fa-palette", count: "1,876", color: "bg-gradient-to-br from-purple-500/80 to-pink-500/80" },
-                { name: "Pazarlama & Satış", icon: "fas fa-chart-bar", count: "2,134", color: "bg-gradient-to-br from-green-500/80 to-emerald-500/80" },
-                { name: "İnsan Kaynakları", icon: "fas fa-users", count: "987", color: "bg-gradient-to-br from-orange-500/80 to-red-500/80" },
-                { name: "Mühendislik", icon: "fas fa-wrench", count: "1,543", color: "bg-gradient-to-br from-gray-500/80 to-slate-600/80" },
-                { name: "Sağlık", icon: "fas fa-heart", count: "876", color: "bg-gradient-to-br from-red-500/80 to-rose-500/80" },
-                { name: "Lojistik", icon: "fas fa-truck", count: "654", color: "bg-gradient-to-br from-indigo-500/80 to-blue-500/80" },
-                { name: "Eğitim", icon: "fas fa-graduation-cap", count: "432", color: "bg-gradient-to-br from-yellow-500/80 to-orange-500/80" },
+                { name: "Software & IT", icon: "fas fa-code", count: "3,245", color: "bg-gradient-to-br from-blue-500/80 to-cyan-500/80" },
+                { name: "Design & Creative", icon: "fas fa-palette", count: "1,876", color: "bg-gradient-to-br from-purple-500/80 to-pink-500/80" },
+                { name: "Marketing & Sales", icon: "fas fa-chart-bar", count: "2,134", color: "bg-gradient-to-br from-green-500/80 to-emerald-500/80" },
+                { name: "Human Resources", icon: "fas fa-users", count: "987", color: "bg-gradient-to-br from-orange-500/80 to-red-500/80" },
+                { name: "Engineering", icon: "fas fa-wrench", count: "1,543", color: "bg-gradient-to-br from-gray-500/80 to-slate-600/80" },
+                { name: "Healthcare", icon: "fas fa-heart", count: "876", color: "bg-gradient-to-br from-red-500/80 to-rose-500/80" },
+                { name: "Logistics", icon: "fas fa-truck", count: "654", color: "bg-gradient-to-br from-indigo-500/80 to-blue-500/80" },
+                { name: "Education", icon: "fas fa-graduation-cap", count: "432", color: "bg-gradient-to-br from-yellow-500/80 to-orange-500/80" },
             ]
         }
     }
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style scoped>
-/* Hover efektini yumuşatmak için */
+/* Smooth hover effect */
 .group:hover .group-hover\:scale-110 {
     transform: scale(1.1);
 }

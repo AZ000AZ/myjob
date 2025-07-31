@@ -13,11 +13,9 @@ Route::get('/jobs', function () {
 // Jobs JSON datası
 Route::get('/jobs-data', [JobListingController::class, 'index']);
 
-// Diğer sayfalar
-Route::view('/companies', 'companies.index')->name('companies.index');
-Route::view('/guide', 'guide.index')->name('guide.index');
-Route::view('/contact', 'contact.index')->name('contact.index');
-Route::view('/services', 'services.index')->name('services.index');
+
+Route::view('/about-contact', 'about-contact.index')->name('about-contact');
+
 
 // API status
 Route::prefix('api')->group(function () {

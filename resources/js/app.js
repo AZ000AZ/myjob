@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import Navbar from './components/Navbar.vue';
 import App from './components/App.vue';
 import CompaniesPage from './components/CompaniesPage.vue';
-
+import AboutContactPage from './components/AboutContactPage.vue';
 
 import JobsPage from './components/JobsPage.vue';
 
@@ -25,4 +25,9 @@ if (document.querySelector('#companies-app')) {
 // Jobs Page (Yeni ekleme)
 if (document.querySelector('#jobs-app')) {
     createApp(JobsPage).mount('#jobs-app');
+}
+
+// Mount About & Contact page
+if (document.querySelector('#about-contact-app')) {
+    createApp(AboutContactPage).mount('#about-contact-app');
 }

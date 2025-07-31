@@ -1,8 +1,8 @@
 <template>
     <div class="bg-white rounded-2xl shadow-lg p-6 max-w-5xl mx-auto space-y-5">
 
-        <!-- Çalışma Şekli Başlık -->
-        <label class="block text-gray-700 font-semibold mb-2">Çalışma Şekli</label>
+        <!-- Work Type Title -->
+        <label class="block text-gray-700 font-semibold mb-2">Work Type</label>
         <div class="grid grid-cols-4 border rounded-lg overflow-hidden text-center text-sm font-medium text-gray-700">
             <button v-for="typeOption in workTypes" :key="typeOption"
                     @click="type = typeOption"
@@ -14,50 +14,50 @@
             </button>
         </div>
 
-        <!-- Filtre Alanı -->
+        <!-- Filter Section -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
 
-            <!-- Ülke Seç -->
+            <!-- Select Country -->
             <div>
-                <label class="block text-gray-700 font-semibold mb-1">Ülke Seç</label>
+                <label class="block text-gray-700 font-semibold mb-1">Select Country</label>
                 <div class="flex items-center border rounded-lg px-3 py-2 bg-gray-50">
                     <i class="fas fa-map-marker-alt text-orange-500 mr-2"></i>
                     <select v-model="country" class="flex-1 outline-none bg-transparent">
-                        <option value="turkiye">Türkiye</option>
-                        <option value="abd">ABD</option>
-                        <option value="avrupa">Avrupa</option>
+                        <option value="turkiye">Turkey</option>
+                        <option value="usa">USA</option>
+                        <option value="europe">Europe</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Şehir Seç -->
+            <!-- Select City -->
             <div>
-                <label class="block text-gray-700 font-semibold mb-1">Şehir Seç</label>
+                <label class="block text-gray-700 font-semibold mb-1">Select City</label>
                 <div class="flex items-center border rounded-lg px-3 py-2 bg-gray-50">
                     <i class="fas fa-map-marker-alt text-orange-500 mr-2"></i>
                     <select v-model="city" class="flex-1 outline-none bg-transparent">
-                        <option value="">Şehir Seç</option>
-                        <option value="istanbul">İstanbul</option>
+                        <option value="">Select City</option>
+                        <option value="istanbul">Istanbul</option>
                         <option value="ankara">Ankara</option>
-                        <option value="izmir">İzmir</option>
+                        <option value="izmir">Izmir</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Anahtar Kelime -->
+            <!-- Keyword -->
             <div>
-                <label class="block text-gray-700 font-semibold mb-1">Anahtar Kelime</label>
+                <label class="block text-gray-700 font-semibold mb-1">Keyword</label>
                 <div class="flex items-center border rounded-lg px-3 py-2 bg-gray-50">
                     <i class="fas fa-briefcase text-orange-500 mr-2"></i>
-                    <input v-model="keyword" placeholder="Anahtar Kelime" class="flex-1 outline-none bg-transparent" />
+                    <input v-model="keyword" placeholder="Keyword" class="flex-1 outline-none bg-transparent" />
                 </div>
             </div>
 
-            <!-- Arama Butonu -->
+            <!-- Search Button -->
             <div class="flex items-end">
                 <button @click="searchJobs"
                         class="flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow transition w-full h-[42px]">
-                    <i class="fas fa-search mr-2"></i> Ara
+                    <i class="fas fa-search mr-2"></i> Search
                 </button>
             </div>
         </div>
@@ -72,7 +72,7 @@ export default {
             city: '',
             country: 'turkiye',
             type: '',
-            workTypes: ['Tam Zamanlı', 'Yarı Zamanlı', 'Sözleşmeli', 'Uzaktan']
+            workTypes: ['Full Time', 'Part Time', 'Contract', 'Remote']
         }
     },
     methods: {
